@@ -100,7 +100,7 @@ body{
     font-size: 20px;
     font-weight: 600;
 }
-.books{
+#book-container{
     display: flex;
     gap: 20px;
 }
