@@ -26,17 +26,6 @@ const books = [
 
 // function displayBooks() {}
 
-{
-  /* <div class="book-card">
-                    <img src="./image/cover.jpg" alt="">
-                    <div class="book-desc">
-                        <h2 class="title">Book Title</h2>
-                        <p class="author">Author: John Doe</p>
-                        <!-- <p>Genre: Fiction</p> -->
-                        <p class="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat blanditiis aspernatur aut facilis animi alias corrupti assumenda nam vero, fugit, esse corporis dolores natus, praesentium dolorem consequatur qui repellendus suscipit.</p>
-                    </div>
-                </div> */
-}
 
 const displayBooks = () => {
   books.map((book, i) => {
