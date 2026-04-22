@@ -37,7 +37,7 @@ async function handleBookSubmit(e) {
                 price: priceInput,
               })
         });
-        if (!response.ok) {
+    if (!response.ok) {
             console.log('something went wrong');
         }
 
