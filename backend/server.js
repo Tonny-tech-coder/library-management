@@ -46,6 +46,13 @@ app.post('/api/books',(req,res)=>{
 
 app.get('/api/books',(req,res) =>{
     const query = `SELECT * FROM books`
+    db.all(query,(err,rows) =>{
+        if(err){
+            console.log('error  in getting books',err);
+        }else{
+            res.json(rows);
+        }
+    })
 })
 
 
