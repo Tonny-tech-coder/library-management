@@ -12,12 +12,6 @@ async function handleBookSubmit(e) {
     const image = document.getElementById('image').value;
     const priceInput = document.getElementById('price').value;
 
-    
-
-
-
-
-
     if (! nameInput.value || ! authorInput.value || ! descInput.value || ! image.value || ! priceInput.value){
         alert('Please fill in all fields');
         return;
@@ -42,9 +36,9 @@ async function handleBookSubmit(e) {
         }
 
      const data = response.json();
-     Model.style.display = 'none';
+     Model.style.display = "none";
      submitForm.reset();
-        alert('data sent successfully');
+        alert('data saved successfully');
 
     } catch (error) {
         console.error(error);
