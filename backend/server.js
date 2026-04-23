@@ -1,10 +1,18 @@
 import express from 'express';
 import {db} from './config/db.js';
 import cors from 'cors';
+
+
 const app = express();
 const PORT = 3000;
 app.use(express.json());
-app.use(cors());
+
+
+app.use(cors({
+    origin:'http://localhost:5500',
+    methods:['GET','POST','PUT','DELETE'],
+    allowedHeaders:['Content-Type']
+}));
 
 app.post('/api/books',(req,res)=>{
 
@@ -34,6 +42,9 @@ app.post('/api/books',(req,res)=>{
     }
     
 })
+
+
+app.get('/api/books',(req,res) =>{})
 
 
 
