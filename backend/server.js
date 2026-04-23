@@ -44,7 +44,9 @@ app.post('/api/books',(req,res)=>{
 })
 
 
-app.get('/api/books',(req,res) =>{})
+app.get('/api/books',(req,res) =>{
+    const query = `SELECT * FROM books`
+})
 
 
 
