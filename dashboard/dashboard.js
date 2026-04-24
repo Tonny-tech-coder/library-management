@@ -11,7 +11,7 @@ addBookbtn.addEventListener('click',()=>{
     model.style.display = "flex";
 })
 
-closebtn.addEventListener('click',()=>{
+closebtn.addEventListener('click', ()=>{
     model.style.display = "none";
 })      
 
