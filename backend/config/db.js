@@ -16,7 +16,6 @@ const dbPath = path.join(path.dirname(filename),'library.db')
                 name TEXT NOT NULL,
                 description TEXT  NOT NULL,
                  author TEXT NOT NULL,
-                 price  REAL NOT NULL,
                 imageSrc TEXT NOT NULL )`)
         
     }

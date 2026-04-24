@@ -30,8 +30,12 @@
         <button class="add-book" id="add-book">Add book</button>
       </div>
 
-      <div class="modal">
+      <div class="modal" id="modal">
         <div class="modal-content">
+          <div class="modal-title">
+            <h2>add new book</h2>
+            <button id="close-model">✕</button>
+          </div>
             <form class="form-content">
                 <div class="input-wraper">
                     <label for="title">Title</label>
@@ -53,7 +57,28 @@
                 <button type="submit">submit</button>
             </form>
         </div>
+        
       </div>
+      
+        </div>
+        <div class="content-section">
+          <table class="table-container">
+            <thead>
+              <tr>id</tr>
+              <tr>name</tr>
+              <tr>author</tr>
+              <tr>description</tr>
+              <tr>image</tr>
+              <tr>price</tr>
+            </thead>
+            <tbody id="table-body">
+
+            </tbody>
+          </table>
+          <div class="empty-state" id="empty-state ">
+            <p>no books found</p>
+            <p>click add book to add</p>
+          </div>
 
 
     </main>

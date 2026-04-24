@@ -19,12 +19,12 @@ app.post('/api/books',(req,res)=>{
     const {title,author,description,imageSrc} = req.body;
 
 
-    if(!name || !description || !author || !price || !imageSrc){
+    if(!name || !description || !author || !imageSrc){
         console.log('all fields are requried');
         return res.status(400).json('all fields are requried');
     }
     const query = `INSERT INTO books (name,description,author,price,imageSrc) VALUES (?,?,?,?,?)`
-    db.run(query,[name, description ,author , price ,imageSrc],(err) =>{
+    db.run(query,[name, description ,author ,imageSrc],(err) =>{
         if(err){
             return console.log('error adding book',err);
     }else{
@@ -50,9 +50,11 @@ app.get('/api/books',(req,res) =>{
         if(err){
             console.log('error  in getting books',err);
         }else{
-            res.json(rows);
+            res.status(500).json(rows);
         }
-    })
+    });
+
+  
 })
 
 
