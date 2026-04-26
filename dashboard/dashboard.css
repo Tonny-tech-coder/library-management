@@ -29,6 +29,21 @@
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid grey;
+  background-color: black;
+
+  height: 135px;
+  width: 100%;
+background-image:url("../image/logobig.webp") ;
+background-size: cover;
+background-repeat: no-repeat;
+border-radius: 12px;
+
+padding-left: 50px;
+  
+}
+
+.logo_title{
+  color: white;
 }
 
 .logo {
@@ -49,6 +64,7 @@
   width: 50px;
   border-radius: 50%;
 }
+
 
 
 .nav-link {
@@ -96,9 +112,12 @@
 }
 .modal-title{
 display: flex;
-background-color: aqua;
+
 justify-content: space-between;
 align-items: center;
+border-radius: 10px;
+gap: 30px;
+
 
 }
 .modal-content{
@@ -106,15 +125,18 @@ align-items: center;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: white;
+    background-color: rgb(87, 21, 21);
     width: 300px;
     height: 400px;
+    border-radius: 60px;
+    box-shadow:4px 4px 100px 0px red;
+    
 }
 input{
     width: 60%;
     padding: 5px;
     border-radius: 8px;
-    border: 1px solid grey;
+    border: 1px black;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -131,5 +153,39 @@ button{
     border-radius: 8px;
 }
 button:hover{
-    background-color: #F97316;
-};
+    background-color: red;
+}
+#h23{
+  background-color: red;
+  border-radius: 7px;
+}
+#save-book:hover{
+  background-color: green;
+}
+#add-book{
+  background-color: orangered;
+}
+#add-book:hover{
+  background-color: green;
+}
+#author{
+  background-color: red;
+}
+#name{
+  background-color: red;
+}
+#description{
+  background-color: red;
+}
+#image{
+  background-color: red;
+}
+#nav-btn{
+  background-color: orangered;
+}
+#nav-btn:hover{
+  background-color: green;
+}
+#nav-btn.link.active{
+  cursor: pointer;
+}

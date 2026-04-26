@@ -12,11 +12,12 @@ const dbPath = path.join(path.dirname(filename),'library.db')
         console.log('connecting error',err );
     }else{
         console.log('connected susseccfuly' );
-            db.run(`CREATE TABLE IF NOT EXISTS books (id INTEGER PRIMARY KEY AUTOINCREMENT,
+            db.run(`CREATE TABLE IF NOT EXISTS books (
+               
                 name TEXT NOT NULL,
-                description TEXT  NOT NULL,
-                 author TEXT NOT NULL,
-                imageSrc TEXT NOT NULL )`)
+                author TEXT  NOT NULL,
+                description TEXT NOT NULL,
+                image TEXT NOT NULL )`)
         
     }
 });

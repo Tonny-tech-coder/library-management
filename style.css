@@ -4,6 +4,8 @@
 }
 .main-content {
   display: flex;
+  
+  
 }
 body{
     background-color: #FAFAFA;
@@ -11,7 +13,7 @@ body{
 
 .sidebar {
   height: 100vh;
-  background-color: #ffff;
+  background-color:black;
   width: 200px;
   padding: 0px 10px;
   /* padding-left: 10px;
@@ -26,21 +28,47 @@ body{
   align-items: center;
   /* justify-content: center; */
   gap: 8px;
+  border: 2px solid red;
+  border-radius: 7px;
+  background-color: black;
 }
 .logo_title {
   font-size: 20px;
   font-weight: bold;
+  color: #FAFAFA;
+  
 }
 .logo img {
   height: 50px;
   width: 50px;
   border-radius: 50%;
 }
+.search-bar input{
+    width: 200px;
+    padding: 12px 20px;
+    border: 2px solid red;
+    border-radius: 8px;
+    background-color:orangered;
+    color: white;
+    outline: none;
+    cursor: pointer;
+}
+.search-bar button{
+    border: 1px solid red;
+    cursor: pointer;
+}
+
+.search-bar button:hover{
+    background-color: green;
+}
 
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border: 2px solid red;
+  border-radius: 7px;
+  background-color: black;
 }
 
 .navlink {
@@ -51,6 +79,8 @@ body{
 .link {
     font-size: 20px;
     padding: 5px;
+    background-color: orangered;
+    border-radius: 7px;
 
 }
 .link a{
@@ -65,7 +95,7 @@ body{
 }
 
 .link:hover{
-    background-color: aliceblue;
+    background-color:green;
     border-radius: 6px;
 }
 
@@ -74,7 +104,7 @@ body{
     display: flex;
     flex-direction: column;
     gap: 20px;
-    /* background-color: aqua; */
+    background-color:black;
     width: 100vw;
     
 }
@@ -84,14 +114,26 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+  height: 200px;
+  width: 100%;
+background-image:url("../image/logobig.webp") ;
+background-size: cover;
+background-repeat: no-repeat;
+border-radius: 12px;
+border:2px solid red;
+
+padding-left: -3px;
+
 }
 
 .book-library button{
-    background-color: black;
+    background-color:orangered;
     color: white;
     padding: 10px;
     font-weight: 600;
     cursor: pointer;
+    border-radius: 7px;
 }
 .books-title{
     display: flex;
@@ -110,7 +152,7 @@ body{
 .book-card{
     background-color: white;
     width: 230px;
-    border: 1px solid rgb(113, 113, 113);
+    border: 2px solid red;
     border-radius: 20px;
     overflow: hidden;
 }
@@ -130,6 +172,7 @@ body{
 .title{
     font-size: 18px;
     font-weight: 600;
+    color: #FAFAFA;
 }
 .author{
     font-size: 15px;
@@ -138,4 +181,7 @@ body{
 .desc{
     font-size: 14px;
     color: #666;
+}
+p{
+    color: white;
 }

@@ -7,17 +7,20 @@
     <link rel="stylesheet" href="dashboard.css" />
   </head>
   <body>
-    <header>
+    <header class="hero">
       <nav class="navbar">
         <div class="logo">
           <img src="../image/logo.png" alt="" />
-          <p class="logo_title">Library</p>
+          <p class="logo_title">Library system management</p>
+          
         </div>
+        
 
         <ul class="nav-link">
-          <li class="link active">Home</li>
-          <li class="link active">Books</li>
-          <li class="link">Profile</li>
+          <li class="link active" id="nav-btn" ><a href="/index.html">Home</a> </li>
+          <li class="link active" id="nav-btn">Books</li>
+          <button class="add-book" id="add-book" style = "color:black">Add book</button>
+          <li class="link active" id="nav-btn">Profile</li>
           <!-- <li class="nav-item">Loans</a></li>
                 <li class="nav-item">Settings</a></li> -->
         </ul>
@@ -25,21 +28,18 @@
     </header>
 
     <main class="main-content">
-      <div class="dash-title">
-        <h1 class="title">Library system management</h1>
-        <button class="add-book" id="add-book">Add book</button>
-      </div>
+     
 
       <div class="modal" id="modal">
         <div class="modal-content">
           <div class="modal-title">
-            <h2>add new book</h2>
+            <h2 id="h23">add new book</h2>
             <button id="close-model">✕</button>
           </div>
             <form class="form-content">
                 <div class="input-wraper">
-                    <label for="title">Title</label>
-                    <input type="text" id="title">
+                    <label for="name">Title</label>
+                    <input type="text" id="name">
                 </div> <br>
 
                 <div class="input-wraper">
@@ -54,7 +54,7 @@
                     <label for="image">image</label>
                     <input type="text" id="image" >
                 </div><br>
-                <button type="submit">submit</button>
+                <button type="submit" id="save-book">submit</button>
             </form>
         </div>
         
@@ -62,20 +62,20 @@
       
         </div>
         <div class="content-section">
-          <table class="table-container">
-            <thead>
-              <tr>id</tr>
-              <tr>name</tr>
-              <tr>author</tr>
-              <tr>description</tr>
-              <tr>image</tr>
-              <tr>price</tr>
-            </thead>
-            <tbody id="table-body">
-
-            </tbody>
+          <table border="2">
+            <tr>
+              <th>id</th>
+              <th>name</th>
+              <th>author</th>
+              <th>description</th>
+              <th>image</th>
+            </tr>
+            <th>
+            </th>
+            <td id="table-body">
+            </td>
           </table>
-          <div class="empty-state" id="empty-state ">
+          <div class="empty-state" id="empty-state">
             <p>no books found</p>
             <p>click add book to add</p>
           </div>

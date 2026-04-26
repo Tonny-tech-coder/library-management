@@ -22,6 +22,13 @@ const books = [
     description: "novel set in the Jazz Age.",
     image: "./image/cover.jpg",
   },
+    {
+    id: 4,
+    title: "Gatsby",
+    author: "Fitzgerald",
+    description: "novel set in the Jazz Age.",
+    image: "./image/cover.jpg",
+  },
 ];
 
 // function displayBooks() {}
