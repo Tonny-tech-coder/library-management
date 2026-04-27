@@ -1,85 +1,115 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Library system dashboard</title>
-    <link rel="stylesheet" href="dashboard.css" />
-  </head>
-  <body>
-    <header class="hero">
-      <nav class="navbar">
-        <div class="logo">
-          <img src="../image/logo.png" alt="" />
-          <p class="logo_title">Library system management</p>
-        </div>
 
-        <ul class="nav-link">
-          <li class="link active" id="nav-btn"><a href="/index.html">Home</a></li>
-          <li class="link active" id="nav-btn">Books</li>
-          <button class="add-book" id="add-book" style="color:black">Add book</button>
-          <li class="link active" id="nav-btn">Profile</li>
-        </ul>
-      </nav>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library System Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+    <header class="hero">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="../image/logo.png" alt="Library Logo">
+                <p class="logo_title">Library System Management</p>
+            </div>
+
+            <ul class="nav-link">
+                <li class="link-active">
+                    <a href="/index.html">Home</a>
+                </li>
+
+                <li class="link-active">Books</li>
+
+                <li>
+                    <button class="add-book" id="add-book">
+                        Add Book
+                    </button>
+                </li>
+
+                <li class="link-active">Profile</li>
+            </ul>
+        </nav>
     </header>
 
     <main class="main-content">
-      <div class="modal" id="modal">
-        <div class="modal-content">
-          <div class="modal-title">
-            <h2 id="h23">Add New Book</h2>
-            <button id="close-model">✕</button>
-          </div>
-          <form id="submit-form" class="form-content">
-            <div class="input-wraper">
-              <label for="name">Title</label>
-              <input type="text" id="name" required />
-            </div>
 
-            <div class="input-wraper">
-              <label for="author">Author</label>
-              <input type="text" id="author" required />
-            </div>
+        <!-- MODAL -->
+        <div class="modal" id="modal">
+            <div class="modal-content">
 
-            <div class="input-wraper">
-              <label for="description">Description</label>
-              <textarea id="description" rows="3" required></textarea>
-            </div>
+                <div class="modal-title">
+                    <h2 id="h23">Add New Book</h2>
+                    <button id="close-modal">✕</button>
+                </div>
 
-            <div class="input-wraper">
-              <label for="image">Image URL</label>
-              <input type="text" id="image" required />
-            </div>
+                <!-- FORM -->
+                <form id="submit-form" class="form-content">
 
-            <button type="submit" id="save-book">Submit</button>
-          </form>
+                    <div class="input-wraper">
+                        <label for="name">Title</label>
+                        <input type="text" id="name" required>
+                    </div>
+
+                    <div class="input-wraper">
+                        <label for="author">Author</label>
+                        <input type="text" id="author" required>
+                    </div>
+
+                    <div class="input-wraper">
+                        <label for="description">Description</label>
+                        <textarea id="description" rows="3" required></textarea>
+                    </div>
+
+                    <div class="input-wraper">
+                        <label for="image">Book Image</label>
+                        <input type="file" id="image" accept="image/*">
+                    </div>
+
+                    <button type="submit" id="save-book">
+                        Save book
+                    </button>
+
+                </form>
+            </div>
         </div>
-      </div>
 
-      <div class="content-section">
-        <table border="1" id="book-table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Author</th>
-              <th>Description</th>
-              <th>Image</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody id="table-body">
-            <!-- Dynamic content will appear here -->
-          </tbody>
-        </table>
+        <!-- TABLE -->
+        <div class="content-section">
 
-        <div class="empty-state" id="empty-state" style="display: none;">
-          <p>No books found</p>
-          <p>Click "Add Book" to add one</p>
+            <table id="book-table" border="3">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Book Name</th>
+                        <th>Author</th>
+                        <th>Description</th>
+                        <th>Image</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody id="table-body">
+                    <!-- JS adds rows here -->
+                </tbody>
+            </table>
+
+            <div
+                id="empty-state"
+                class="empty-state"
+                style="display: none;"
+            >
+                <p>No books found</p>
+                <p>Click Add Book to create one</p>
+            </div>
+
         </div>
-      </div>
+
     </main>
 
     <script src="./dashboard.js"></script>
-  </body>
+</body>
 </html>
+

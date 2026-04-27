@@ -17,175 +17,239 @@
   font-weight: 600;
   cursor: pointer;
 }
-.main-content{
-    display: flex;
-    gap: 20px;
-    flex-direction: column;
-    padding: 20px;
+
+.main-content {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  padding: 20px;
 }
 
 .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 1000;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   border-bottom: 1px solid grey;
   background-color: black;
 
   height: 135px;
   width: 100%;
-background-image:url("../image/logobig.webp") ;
-background-size: cover;
-background-repeat: no-repeat;
-border-radius: 12px;
 
-padding-left: 50px;
-  
+  background-image: url("../image/logobig.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  border-radius: 0; /* optional: better for fixed bars */
+  padding-left: 50px;
 }
 
-.logo_title{
+.logo_title {
   color: white;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .logo {
   height: 100px;
-  /* background-color:#F97316; */
   display: flex;
-  /* flex-direction: column; */
   align-items: center;
-  /* justify-content: center; */
   gap: 8px;
 }
-.logo_title {
-  font-size: 20px;
-  font-weight: bold;
-}
+
 .logo img {
   height: 50px;
   width: 50px;
   border-radius: 50%;
 }
 
-
-
 .nav-link {
   display: flex;
   gap: 10px;
 }
+
 .link {
-    font-size: 20px;
-    padding: 5px;
-    list-style: none;
-    text-decoration: none;
-
-}
-.link a{
-    text-decoration: none;
-    color: black;
-    list-style: none;
-}
-.link-list{
-    text-decoration: none;
-    color: rgb(211, 25, 25);
-    list-style: none;
-    
+  font-size: 20px;
+  padding: 5px;
+  list-style: none;
 }
 
-.active{
-    background-color: #FFF7ED;
-    padding: 5px;
-    border-radius: 6px;
+.link a {
+  text-decoration: none;
+  color: black;
 }
 
-.link:hover{
-    background-color: aliceblue;
-    border-radius: 6px;
+.active {
+  background-color: #FFF7ED;
+  padding: 5px;
+  border-radius: 6px;
 }
 
-.modal{
-    background-color: rgb(0, 0, 0,0.5);
-    height: 100vh;
-    width: 100vw;
-    position: fixed;
-    display: none;
-    align-items: center;
-    justify-content: center;
+.link:hover {
+  background-color: aliceblue;
+  border-radius: 6px;
 }
-.modal-title{
-display: flex;
 
-justify-content: space-between;
-align-items: center;
-border-radius: 10px;
-gap: 30px;
+/* ---------------- MODAL FIX (IMPORTANT) ---------------- */
 
-
-}
-.modal-content{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: rgb(87, 21, 21);
-    width: 300px;
-    height: 400px;
-    border-radius: 60px;
-    box-shadow:4px 4px 100px 0px red;
-    
-}
-input{
-    width: 60%;
-    padding: 5px;
-    border-radius: 8px;
-    border: 1px black;
-  display: flex;
+.modal {
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  display: none;
   align-items: center;
   justify-content: center;
+  z-index: 1000;
+}
 
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(87, 21, 21);
+  width: 320px;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 4px 4px 100px 0px red;
+}
 
+.modal-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
-button{
-    padding: 10px;
-    background-color: black;
-    color: white;
-    font-weight: 600;
-    cursor: pointer;
-    border: none;
-    border-radius: 8px;
-}
-button:hover{
-    background-color: red;
-}
-#h23{
-  background-color: red;
-  border-radius: 7px;
-}
-#save-book:hover{
-  background-color: green;
-}
-#add-book{
+
+/* ---------------- INPUT FIX ---------------- */
+
+input,
+textarea {
+  width: 80%;
+  padding: 6px;
+  border-radius: 8px;
+  border: none;
+  margin: 5px 0;
   background-color: orangered;
 }
-#add-book:hover{
-  background-color: green;
-}
-#author{
-  background-color: red;
-}
-#name{
-  background-color: red;
-}
-#description{
-  background-color: red;
-}
-#image{
-  background-color: red;
-}
-#nav-btn{
-  background-color: orangered;
-}
-#nav-btn:hover{
-  background-color: green;
-}
-#nav-btn.link.active{
+
+/* ---------------- BUTTON FIX ---------------- */
+
+button {
+  padding: 10px;
+  background-color:orangered;
+  color: white;
+  font-weight: 600;
   cursor: pointer;
+  border: none;
+  border-radius: 8px;
+}
+#close-modal:hover {
+  background-color: red;
+}
+
+button:hover {
+  background-color: green;
+}
+
+#save-book:hover {
+  background-color: green;
+}
+#save-book {
+  background-color: orangered;
+  color: black;
+}
+
+/* ---------------- NAV BUTTON ---------------- */
+
+#add-book {
+  background-color: orangered;
+  color: black;
+}
+
+#add-book:hover {
+  background-color: green;
+}
+
+/* ---------------- TABLE FIX (IMPORTANT FOR JS) ---------------- */
+
+#book-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#book-table th,
+#book-table td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+/* ---------------- IMAGE FIX ---------------- */
+
+#book-table img {
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+/* ---------------- EMPTY STATE ---------------- */
+
+.empty-state {
+  text-align: center;
+  padding: 30px;
+  font-size: 18px;
+  color: gray;
+}
+
+/* ---------------- NAV BUTTON FIX ---------------- */
+
+#nav-btn {
+  background-color: orangered;
+  padding: 5px 10px;
+  color: black;
+}
+
+#nav-btn:hover {
+  background-color: green;
+}
+.nav-link {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+.link-active {
+  background-color:orangered;
+  padding: 9px;
+  border-radius: 6px;
+}
+.link-active:hover {
+  background-color: green;
+}
+a{
+  color:black;
+  text-decoration: none;
+}
+#image {
+  border-radius: 6px;
+  background-color: orangered;
+}
+table,th,td{
+  background-color: black;
+  color: orangered;
+  border :1px solid red;
+  border: collapse;
+}
+body{
+  background-color: black;
 }
