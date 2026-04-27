@@ -17,7 +17,7 @@ const API_BASE = "http://localhost:3000/api/books";
 let currentBookId = null;
 let currentImageUrl = null;
 
-/* ---------------- MODAL ---------------- */
+/* ---------------- MODAL ------------------ */
 
 addBookBtn.addEventListener("click", () => {
     currentBookId = null;
