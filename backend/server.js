@@ -1,6 +1,7 @@
 import express from 'express';
 import { db } from './config/db.js';
 import cors from 'cors';
+import { sqlite3 } from 'sqlite3';
 
 
 const app = express();
@@ -58,7 +59,27 @@ app.get('/api/books', (req, res) => {
     });
 
 
-})
+});
+
+
+// edit fun
+app.get('/api/books/:id',(req, res) => {
+    const {id} = req.params;
+    if (!id)
+        return res.status(400).json({
+    message: "missing id"
+});
+        const query = `SELECT * FROM books WHERE id=?`
+    db.all(query,[id], (err, rows) => {
+        if (err) {
+            console.log('error  in getting books', err);
+            
+        } else {
+            return res.status(200).json(rows[0]);
+        }
+    });
+});
+
 
 
 

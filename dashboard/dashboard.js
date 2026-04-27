@@ -1,5 +1,3 @@
-
-
 const model = document.getElementById("modal");
 const addBookbtn = document.getElementById("add-book");
 const closeBtn = document.getElementById("close-model");
@@ -7,190 +5,243 @@ const saveBookbtn = document.getElementById("save-book");
 const submitForm = document.getElementById("submit-form");
 const bookTable = document.getElementById("book-table");
 const tableBody = document.getElementById("table-body");
-const emptyState = document.getElementById("empty-state")
+const emptyState = document.getElementById("empty-state");
 
+// Get input elements
+const nameInput = document.getElementById('name');
+const authorInput = document.getElementById('author');
+const descInput = document.getElementById('description');
+const imgSrcInput = document.getElementById('image');
 
 const API_BASE = 'http://localhost:3000/api';
 
+let currentBookId = null;
 
-
-// empty state
+// Empty state functions
 function showEmptyState() {
-    emptyState.classList.remove('show');
-    tableBody.style.display = 'none';
+    emptyState.style.display = 'block';
+    bookTable.style.display = 'none';
 }
-// hide empty state
-function hideEmptyState() {
-    emptyState.classList.add('show');
-    tableBody.style.display = 'table';
-};
 
-// ui events
+function hideEmptyState() {
+    emptyState.style.display = 'none';
+    bookTable.style.display = 'table';
+}
+
+// UI events
 addBookbtn.addEventListener('click', () => {
     model.style.display = "flex";
-})
+    currentBookId = null;
+    submitForm.reset();
+    document.querySelector('#h23').textContent = 'Add New Book';
+});
 
 closeBtn.addEventListener('click', () => {
     model.style.display = "none";
-})
+    submitForm.reset();
+    currentBookId = null;
+});
 
-// edit book
-async function editbook(bookid) {
+// Close modal when clicking outside
+window.addEventListener('click', (e) => {
+    if (e.target === model) {
+        model.style.display = "none";
+        submitForm.reset();
+        currentBookId = null;
+    }
+});
 
-}
+// Create HTML row for book
+const createHtmlRow = (book, index) => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+    <td>${index + 1}</td>
+    <td>${book.name}</td>
+    <td>${book.author}</td>
+    <td>${book.description}</td>
+    <td><img src="${book.image}" alt="${book.name}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;" onerror="this.src='https://via.placeholder.com/50'"></td>
+    <td>
+        <div class='action-cell' style="display: flex; gap: 8px;">
+            <button class='edit-action' style="background-color: #4CAF50; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 4px;" onclick='viewBook("${book.id}")'>View</button>
+            <button class='edit-action' style="background-color: #2196F3; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 4px;" onclick='editBook("${book.id}")'>Edit</button>
+            <button class='edit-action' style="background-color: #f44336; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 4px;" onclick='deleteBook("${book.id}")'>Delete</button>
+        </div>
+    </td>
+    `;
+    return row;
+};
 
-//deleteing funtion
-async function deleteBook(id) {
-    if (!bookid)
-        return console.log('missing bookid');
+// Display books in table
+const displayBooks = (books) => {
+    tableBody.innerHTML = '';
 
-    try {
-        const response = await fetch(`${API_BASE}/books/${booksId}`, {
-            method: 'DELETE',
-        });
-        if (!response.ok) {
-            console.log('error in deleting book');
-        } else {
-            alert('book deleted successfully');
-            loadBooks()
-        }
-    } catch (error) {
-        console.log(error);
-        alert('somthing went wrong in deleting book');
+    if (!books || books.length === 0) {
+        showEmptyState();
+        return;
     }
 
-}
-//display books
+    hideEmptyState();
+    books.forEach((book, i) => {
+        const row = createHtmlRow(book, i);
+        tableBody.appendChild(row);
+    });
+};
+
+// Load books from API
 const loadBooks = async () => {
     try {
-
         const response = await fetch(`${API_BASE}/books`);
 
         if (!response.ok) {
-            console.log('Error in getting data:',);
+            console.log('Error in getting data');
+            showEmptyState();
             return;
         }
 
         const books = await response.json();
-        displaybooks({ books });
+        displayBooks(books);
     } catch (error) {
-        showEmptyState()
         console.log(error);
+        showEmptyState();
+    }
+};
+
+// View book details
+function viewBook(bookId) {
+    fetch(`${API_BASE}/books/${bookId}`)
+        .then(response => response.json())
+        .then(book => {
+            alert(`Book Details:\n\nTitle: ${book.name}\nAuthor: ${book.author}\nDescription: ${book.description}\nImage: ${book.image}`);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Could not fetch book details');
+        });
+}
+
+// Edit book function
+async function editBook(bookId) {
+    model.style.display = "flex";
+    currentBookId = bookId;
+    document.querySelector('#h23').textContent = 'Edit Book';
+
+    try {
+        const response = await fetch(`${API_BASE}/books/${bookId}`);
+
+        if (response.ok) {
+            const existingBook = await response.json();
+
+            nameInput.value = existingBook.name;
+            authorInput.value = existingBook.author;
+            descInput.value = existingBook.description;
+            imgSrcInput.value = existingBook.image;
+        } else {
+            console.log('Error fetching book details');
+            alert('Could not fetch book details');
+        }
+    } catch (error) {
+        console.log(error);
+        alert('Something went wrong while fetching book details');
     }
 }
-const displaybooks = ({ books }) => {
-    tableBody.innerHTML = ''
 
-    if (!books) {
-        console.log('No books found');
-        return
-        emptyState.classList.add('show');
+// Delete book function
+async function deleteBook(bookId) {
+    if (!bookId) {
+        console.log('missing bookid');
+        return;
     }
 
-    books.forEach((bookTable, i) => {
-        const row = createHtmlRow(book);
-
-
-    });
-}
-
-
-
-/*const createHtmlrow = (book, index) => {
-    const row = document.createElement('tr');
-    row.innerHTML = `
-    <td><stronge>${index + 1}<stronge></td>
-    <td><stronge>${book.name}<stronge></td>
-    <td class = 'truncate'>${book.author}</td>
-    <td class = 'truncate'>${book.description}</td>
-    
-    <td class = 'truncate'>
-    <img class = 'table-image' src="${book.imgSrc}" alt="${book.name}">
-    </td>
-    <td class = 'truncate'>${book.price}</td>
-    div class = 'action-cell'>
-    <button class = 'edit-action'>view</button>
-    <button class = 'edit-action'>Edit</button>
-    <button class = 'edit-action'>delete</button>
-    </div>
-    </td>
-    `
-}*/
-// submit zone
-async function handleBookSubmit(e) {
-    e.preventDefault();
-    const name = document.getElementById('name').value;
-    const author = document.getElementById('author').value;
-    const description = document.getElementById('description').value;
-    const image = document.getElementById('image').value;
-
-
-    if (!name || !author || !description || !image) {
-        console.log({name,author,description,image});
-        //alert('Please fill in all fields');
+    if (!confirm('Are you sure you want to delete this book?')) {
         return;
     }
 
     try {
-        const response = await fetch(`${API_BASE}/books`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                name:name,
-                author:author,
-                description:description,
-                image:image,
-
-            })
+        const response = await fetch(`${API_BASE}/books/${bookId}`, {
+            method: 'DELETE',
         });
+
         if (!response.ok) {
-            console.log('something went wrong');
+            console.log('Error in deleting book');
+            alert('Failed to delete book');
+        } else {
+            alert('Book deleted successfully');
+            loadBooks();
+        }
+    } catch (error) {
+        console.log(error);
+        alert('Something went wrong in deleting book');
+    }
+}
+
+// Handle book submit (Create or Update)
+async function handleBookSubmit(e) {
+    e.preventDefault();
+    
+    const name = nameInput.value.trim();
+    const author = authorInput.value.trim();
+    const description = descInput.value.trim();
+    const image = imgSrcInput.value.trim();
+
+    if (!name || !author || !description || !image) {
+        alert('Please fill in all fields');
+        return;
+    }
+
+    try {
+        let response;
+        
+        if (currentBookId) {
+            // Update existing book
+            response = await fetch(`${API_BASE}/books/${currentBookId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: name,
+                    author: author,
+                    description: description,
+                    image: image
+                })
+            });
+        } else {
+            // Create new book
+            response = await fetch(`${API_BASE}/books`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: name,
+                    author: author,
+                    description: description,
+                    image: image
+                })
+            });
+        }
+
+        if (!response.ok) {
+            const errorData = await response.text();
+            console.log('Error response:', errorData);
             alert('Failed to save data');
-        }
-        else{
-            alert('data saved successfully');
-
+            return;
         }
 
-        const data = await response.json();
-        model.style.display = "none";
+        alert(currentBookId ? 'Book updated successfully!' : 'Book saved successfully!');
         submitForm.reset();
+        model.style.display = "none";
+        currentBookId = null;
+        loadBooks();
 
     } catch (error) {
         console.error(error);
+        alert('Something went wrong while saving. Make sure the backend server is running on port 3000');
     }
-
 }
 
-
+// Save button event
 saveBookbtn.addEventListener('click', handleBookSubmit);
 
+// Load books when page loads
 document.addEventListener('DOMContentLoaded', loadBooks);
-
-
-
-// my funtion
-window.onload = function () {
-    loadBooks();
-};
-
-function loadbooks() {
-    fetch("http://localhost:3000/api/books")
-    .then(res => res.json())
-    .then(data => {
-        let rows = "";
-        data.forEach(book => {
-            rows += `<tr>
-            <td>${id}</td>
-            <td>${name}</td>
-            <td>${author}</td>
-            <td>${description}</td>
-            <td>${image}</td>
-            `
-        });
-        document.getElementById("tableBody").innerHTML = rows;
-    })
-    .catch(err => console.log("error:",err));
-}

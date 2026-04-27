@@ -7,81 +7,79 @@
     <link rel="stylesheet" href="dashboard.css" />
   </head>
   <body>
-    <header class="hero" >
-      <nav class="navbar" >
-        <div class="logo" >
+    <header class="hero">
+      <nav class="navbar">
+        <div class="logo">
           <img src="../image/logo.png" alt="" />
           <p class="logo_title">Library system management</p>
-          
         </div>
-        
 
         <ul class="nav-link">
-          <li class="link active" id="nav-btn" ><a href="/index.html">Home</a> </li>
+          <li class="link active" id="nav-btn"><a href="/index.html">Home</a></li>
           <li class="link active" id="nav-btn">Books</li>
-          <button class="add-book" id="add-book" style = "color:black">Add book</button>
+          <button class="add-book" id="add-book" style="color:black">Add book</button>
           <li class="link active" id="nav-btn">Profile</li>
-          <!-- <li class="nav-item">Loans</a></li>
-                <li class="nav-item">Settings</a></li> -->
         </ul>
       </nav>
     </header>
 
     <main class="main-content">
-     
-
       <div class="modal" id="modal">
         <div class="modal-content">
           <div class="modal-title">
-            <h2 id="h23">add new book</h2>
+            <h2 id="h23">Add New Book</h2>
             <button id="close-model">✕</button>
           </div>
-            <form class="form-content">
-                <div class="input-wraper">
-                    <label for="name">Title</label>
-                    <input type="text" id="name">
-                </div> <br>
+          <form id="submit-form" class="form-content">
+            <div class="input-wraper">
+              <label for="name">Title</label>
+              <input type="text" id="name" required />
+            </div>
 
-                <div class="input-wraper">
-                    <label for="author">Author</label>
-                    <input type="text" id="author">
-                </div><br>
-                <div class="input-wraper">
-                    <label for="description">Description</label>
-                    <input type="text" id="description">
-                </div><br>
-                <div class="input-wraper">
-                    <label for="image">image</label>
-                    <input type="text" id="image" >
-                </div><br>
-                <button type="submit" id="save-book">submit</button>
-            </form>
+            <div class="input-wraper">
+              <label for="author">Author</label>
+              <input type="text" id="author" required />
+            </div>
+
+            <div class="input-wraper">
+              <label for="description">Description</label>
+              <textarea id="description" rows="3" required></textarea>
+            </div>
+
+            <div class="input-wraper">
+              <label for="image">Image URL</label>
+              <input type="text" id="image" required />
+            </div>
+
+            <button type="submit" id="save-book">Submit</button>
+          </form>
         </div>
-        
       </div>
-      
-        </div>
-        <div class="content-section">
-          <table border="2">
+
+      <div class="content-section">
+        <table border="1" id="book-table">
+          <thead>
             <tr>
-              <th>id</th>
-              <th>name</th>
-              <th>author</th>
-              <th>description</th>
-              <th>image</th>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Author</th>
+              <th>Description</th>
+              <th>Image</th>
+              <th>Actions</th>
             </tr>
-            <th>
-            </th>
-            <td id="table-body">
-            </td>
-          </table>
-          <div class="empty-state" id="empty-state">
-            <p>no books found</p>
-            <p>click add book to add</p>
-          </div>
+          </thead>
+          <tbody id="table-body">
+            <!-- Dynamic content will appear here -->
+          </tbody>
+        </table>
 
-
+        <div class="empty-state" id="empty-state" style="display: none;">
+          <p>No books found</p>
+          <p>Click "Add Book" to add one</p>
+        </div>
+      </div>
     </main>
+
     <script src="./dashboard.js"></script>
   </body>
 </html>
