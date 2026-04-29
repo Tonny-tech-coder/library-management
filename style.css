@@ -61,6 +61,9 @@ body{
 .search-bar button:hover{
     background-color: green;
 }
+#btn:hover{
+    background-color: green;
+}
 
 .navbar {
     padding-top:20px;
@@ -186,4 +189,10 @@ padding-left: -3px;
 }
 p{
     color: white;
+}
+#usericon{
+    display:none;
+}
+#signInbtn:hover{
+    background-color:green;
 }

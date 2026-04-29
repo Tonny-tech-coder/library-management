@@ -97,7 +97,6 @@ function displayBooks(books) {
     }
 
     hideEmptyState();
-
     books.forEach((book, index) => {
         const row = document.createElement("tr");
 
