@@ -165,6 +165,30 @@ app.delete("/api/books/:id", (req, res) => {
     });
 });
 
+/*------search------*/
+
+app.get("/api/search/:searchValue", (req, res) => {
+    const { searchValue } = req.params;
+
+    console.log(searchValue);
+
+    const searchQuery = `SELECT * FROM books WHERE name LIKE ?`; 
+
+    db.all(searchQuery, [`${searchValue}%`], (err, rows) => {
+
+      if(err){
+        return res
+        .status(400)
+        .json({message: "something went wrong", error: err });
+
+      }
+      console.log(rows);
+      
+      return res.status(200).json({message: "search successful", data: rows});
+    });
+});
+
+
 /* ---------------- START SERVER ---------------- */
 
 app.listen(PORT, () => {

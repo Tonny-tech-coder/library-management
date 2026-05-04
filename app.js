@@ -1,74 +1,74 @@
 const bookContainer = document.getElementById("book-container");
+const searchInput = document.getElementById("searchInput");
+const siginBtn = document.getElementById("signin-btn");
+const signupBtn = document.getElementById("signup-btn");
+const profile = document.getElementById("profile");
+const API_BASE = 'http://localhost:3000';
+const bookcard = document.getElementsByClassName('book-card');
+const navLinks = document.getElementById('navLink');
 
-const books = [
-  {
-    id: 1,
-    title: "The Great Gatsby",
-    author: "F. Scott Fitzgerald",
-    description: "A classic American novel set in the Jazz Age.",
-    image: "./image/cover.jpg",
-  },
-  {
-    id: 2,
-    title: "The Great ",
-    author: "F. Scott ",
-    description: "The great book",
-    image: "./image/cover.jpg",
-  },
-  {
-    id: 3,
-    title: "Gatsby",
-    author: "Fitzgerald",
-    description: "novel set in the Jazz Age.",
-    image: "./image/cover.jpg",
-  },
-    {
-    id: 4,
-    title: "Gatsby",
-    author: "Fitzgerald",
-    description: "novel set in the Jazz Age.",
-    image: "./image/cover.jpg",
-  },
-];
-
-// function displayBooks() {}
+/* ---------------- FETCH BOOKS ---------------- */
 
 
-const displayBooks = () => {
-  books.map((book, i) => {
-
-    // create html element 
-    const bookCard = document.createElement("div");
-    const bookImage = document.createElement("img");
-
-    const bookDescDiv = document.createElement("div");
-    const bookTitle = document.createElement("h2");
-    const author = document.createElement("p");
-    const description = document.createElement("p");
-
-    // insert data
-    bookImage.src = `${book.image}`;
-    bookImage.alt = `${book.title} cover image`;
-    bookTitle.textContent = `${book.title}`;
-    author.innerText = `${book.author}`;
-    description.innerText = `${book.description}`;
-
-    // add a css class 
-    bookCard.className = 'book-card'
-    bookDescDiv.className = "book-desc"
-    bookTitle.className = 'title'
-    author.className = 'author'
-    description.className = 'desc'
+/* ------searchinput------*/
+searchInput.addEventListener('keydown', async (event) => {
+  if(event.key === 'Enter'){
+    event.preventDefault();
+    const searchValue = searchInput.value.trim();
     
-    //display in html
-    bookDescDiv.appendChild(bookTitle);
-    bookDescDiv.appendChild(author);
-    bookDescDiv.appendChild(description);
-    bookCard.appendChild(bookImage);
-    bookCard.appendChild(bookDescDiv);
+    if(searchValue){
+      window.location.href = './serach/index.html?q=' + encodeURIComponent(searchValue);
+    }
+  }
+});
+  
 
-    bookContainer.appendChild(bookCard);
-  });
+const displayBooks = async () => {
+  try {
+    const response = await fetch(`${API_BASE}/api/books`);
+    if(!response.ok) {
+      console.error('Failed to fetch books');
+      return;
+    }
+    
+    const books = await response.json();
+
+    books.forEach((book) => {
+      // create html element 
+      const bookCard = document.createElement("div");
+      const bookImage = document.createElement("img");
+
+      const bookDescDiv = document.createElement("div");
+      const bookTitle = document.createElement("h2");
+      const author = document.createElement("p");
+      const description = document.createElement("p");
+
+      // insert data
+      bookImage.src = `${book.image}`;
+      bookImage.alt = `${book.name} cover image`;
+      bookTitle.textContent = `${book.name}`;
+      author.innerText = `${book.author}`;
+      description.innerText = `${book.description}`;
+
+      // add a css class 
+      bookCard.className = 'book-card'
+      bookDescDiv.className = "book-desc"
+      bookTitle.className = 'title'
+      author.className = 'author'
+      description.className = 'desc'
+      
+      //display in html
+      bookDescDiv.appendChild(bookTitle);
+      bookDescDiv.appendChild(author);
+      bookDescDiv.appendChild(description);
+      bookCard.appendChild(bookImage);
+      bookCard.appendChild(bookDescDiv);
+
+      bookContainer.appendChild(bookCard);
+    });
+  } catch(error) {
+    console.error('Error loading books:', error);
+  }
 };
 
 displayBooks();
