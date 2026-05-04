@@ -1,26 +1,41 @@
+/* ============================================
+   GLOBAL RESET & CSS VARIABLES
+   ============================================ */
 * {
   padding: 0;
   margin: 0;
 }
 
+/* CSS Color Variables - Change these to update entire theme */
 :root {
   --primary-color: red;
-  --secondary-color:black;
+  --secondary-color: black;
   --thrid-color: white;
   --fouth-color: orangered;
   --fifth-color: green;
 }
+
+/* ============================================
+   PAGE LAYOUT & BODY STYLING
+   ============================================ */
+/* Main Content Flex Container - Holds sidebar and library section */
 .main-content {
   display: flex;
   width: 100%;
 }
-body{
-    background-color: var(--thrid-color);
+
+/* Page Background Color */
+body {
+  background-color: var(--thrid-color);
 }
 
+/* ============================================
+   SIDEBAR - FIXED NAVIGATION PANEL
+   ============================================ */
+/* Fixed Sidebar - Stays on left side when scrolling */
 .sidebar {
   height: 100vh;
-  background-color:var(--secondary-color);
+  background-color: var(--secondary-color);
   width: 200px;
   padding: 0px 10px;
   position: fixed;
@@ -30,54 +45,73 @@ body{
   overflow-y: auto;
 }
 
+/* ============================================
+   LOGO SECTION
+   ============================================ */
+/* Logo Container */
 .logo {
   height: 100px;
-  /* background-color:#F97316; */
   display: flex;
-  /* flex-direction: column; */
   align-items: center;
-  /* justify-content: center; */
+  justify-content: center;
   gap: 8px;
   border: 2px solid var(--primary-color);
   border-radius: 7px;
   background-color: var(--secondary-color);
 }
+
+/* Logo Title Text */
 .logo_title {
   font-size: 20px;
   font-weight: bold;
   color: var(--primary-color);
-  
 }
+
+/* Logo Image */
 .logo img {
   height: 50px;
   width: 50px;
   border-radius: 50%;
 }
-.search-bar input{
-    width: 200px;
-    padding: 12px 20px;
-    border: 2px solid var(--primary-color);
-    border-radius: 8px;
-    background-color:var(--primary-color);
-    color:var(--thrid-color);
-    outline: none;
-    cursor: pointer;
-}
-.search-bar button{
-    border: 1px solid var(--fouth-color);
-    cursor: pointer;
+
+/* ============================================
+   SEARCH BAR
+   ============================================ */
+/* Search Input Field */
+.search-bar input {
+  width: 200px;
+  padding: 12px 20px;
+  border: 2px solid var(--primary-color);
+  border-radius: 8px;
+  background-color: var(--primary-color);
+  color: var(--thrid-color);
+  outline: none;
+  cursor: pointer;
 }
 
-.search-bar button:hover{
-    background-color: var(--fifth-color);
-}
-#btn:hover{
-    background-color: var(--fifth-color);
+/* Search Button Styling */
+.search-bar button {
+  border: 1px solid var(--fouth-color);
+  cursor: pointer;
 }
 
+/* Search Button Hover */
+.search-bar button:hover {
+  background-color: var(--fifth-color);
+}
+
+/* Sign In Button Hover */
+#btn:hover {
+  background-color: var(--fifth-color);
+}
+
+/* ============================================
+   NAVIGATION MENU
+   ============================================ */
+/* Navigation Bar Container */
 .navbar {
-    padding-top:20px;
-    padding-bottom: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -86,160 +120,211 @@ body{
   background-color: var(--secondary-color);
 }
 
+/* Navigation Links Container - Vertical List */
 .navlink {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
+
+/* Individual Navigation Link */
 .link {
-    font-size: 20px;
-    padding: 5px;
-    background-color: var(--primary-color);
-    border-radius: 7px;
-
-}
-.link a{
-    text-decoration: none;
-    color: var(--secondary-color);
-}
-/*it was white*/
-.active{
-    background-color: var(--primary-color);
-    padding: 5px;
-    border-radius: 6px;
+  font-size: 20px;
+  padding: 5px;
+  background-color: var(--primary-color);
+  border-radius: 7px;
 }
 
-.link:hover{
-    background-color: var(--fifth-color);
-    border-radius: 6px;
+/* Navigation Link Text */
+.link a {
+  text-decoration: none;
+  color: var(--secondary-color);
 }
 
-.library-section{
-    padding:10px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    background-color: var(--secondary-color);
-    width: calc(100vw - 200px);
-    margin-left: 200px;
+/* Active Navigation Link */
+.active {
+  background-color: var(--primary-color);
+  padding: 5px;
+  border-radius: 6px;
 }
 
+/* Navigation Link Hover */
+.link:hover {
+  background-color: var(--fifth-color);
+  border-radius: 6px;
+}
 
-.book-library{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* ============================================
+   LIBRARY SECTION - MAIN CONTENT AREA
+   ============================================ */
+/* Main Library Content Area - Adjusts for fixed sidebar */
+.library-section {
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: var(--secondary-color);
+  width: calc(100vw - 200px);
+  margin-left: 200px;
+}
 
+/* ============================================
+   BOOK LIBRARY HEADER
+   ============================================ */
+/* Book Library Header Banner with Background Image */
+.book-library {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   height: 200px;
   width: 100%;
-background-image:url("../image/logobig.webp") ;
-background-size: cover;
-background-repeat: no-repeat;
-border-radius: 12px;
-border:2px solid var(--primary-color);
-
-padding-left: -3px;
-
+  background-image: url("../image/logobig.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 12px;
+  border: 2px solid var(--primary-color);
+  padding-left: -3px;
 }
 
-.book-library button{
-    background-color:var(--primary-color);
-    color: var(--thrid-color);
-    padding: 10px;
-    font-weight: 600;
-    cursor: pointer;
-    border-radius: 7px;
-}
-.books-title{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.books-title p{
-    font-size: 20px;
-    font-weight: 600;
-}
-#book-container{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-    gap: 20px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding: 20px 0;
-    scroll-behavior: smooth;
-    width: 100%;
-    margin-right: 20px;
-    max-height: 200%;
+/* Header Button Styling */
+.book-library button {
+  background-color: var(--primary-color);
+  color: var(--thrid-color);
+  padding: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 7px;
 }
 
+/* ============================================
+   BOOKS SECTION TITLE
+   ============================================ */
+/* Books Title Container - Shows title and count */
+.books-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Books Title Text */
+.books-title p {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+
+/* ============================================
+   BOOKS CONTAINER - GRID LAYOUT
+   ============================================ */
+/* Books Grid Container - Displays books in responsive grid with vertical scroll */
+#book-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 20px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px 0;
+  scroll-behavior: smooth;
+  width: 100%;
+  margin-right: 20px;
+  max-height: 200%;
+}
+
+/* Custom Scrollbar - Track */
 #book-container::-webkit-scrollbar {
-    height: 8px;
+  height: 8px;
 }
 
+/* Custom Scrollbar - Track Background */
 #book-container::-webkit-scrollbar-track {
-    background: var(--primary-color);
-    border-radius: 10px;
+  background: var(--primary-color);
+  border-radius: 10px;
 }
 
+/* Custom Scrollbar - Thumb (Draggable Part) */
 #book-container::-webkit-scrollbar-thumb {
-    background: var(--primary-color);
-    border-radius: 10px;
+  background: var(--primary-color);
+  border-radius: 10px;
 }
 
+/* Custom Scrollbar - Thumb Hover */
 #book-container::-webkit-scrollbar-thumb:hover {
-    background: var(--primary-color);
+  background: var(--primary-color);
 }
 
-.book-card{
-    background-color:var(--primary-color);
-    width: 230px;
-    min-width: 230px;
-    border: 2px solid var(--primary-color);
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* ============================================
+   BOOK CARDS - INDIVIDUAL BOOK DISPLAY
+   ============================================ */
+/* Individual Book Card */
+.book-card {
+  background-color: var(--primary-color);
+  width: 230px;
+  min-width: 230px;
+  border: 2px solid var(--primary-color);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-/* it was -10px */
+
+/* Book Card Hover Effect - Lifts and adds glow */
 .book-card:hover {
-    transform: translateY(-20px);
-    box-shadow: 0 10px 16px rgba(255, 60, 1, 0.774);
-}
-.book-card img{
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
+  transform: translateY(-20px);
+  box-shadow: 0 10px 16px rgba(255, 60, 1, 0.774);
 }
 
-.book-desc{
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+/* Book Cover Image */
+.book-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
 
+/* ============================================
+   BOOK DETAILS - TITLE, AUTHOR, DESCRIPTION
+   ============================================ */
+/* Book Details Container */
+.book-desc {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
-.title{
-    font-size: 18px;
-    font-weight: 600;
-    color:var(--secondary-color);
+
+/* Book Title */
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--secondary-color);
 }
-.author{
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--secondary-color);
+
+/* Book Author */
+.author {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--secondary-color);
 }
-.desc{
-    font-size: 14px;
-    color: var(--secondary-color);
+
+/* Book Description */
+.desc {
+  font-size: 14px;
+  color: var(--secondary-color);
 }
-/* it was white */
-p{
-    color: var(--primary-color);
+
+/* ============================================
+   GLOBAL PARAGRAPH & SPECIAL ELEMENTS
+   ============================================ */
+/* Global Paragraph Text Color */
+p {
+  color: var(--primary-color);
 }
-/* it was none */
-#usericon{
-    display:flex;
+
+/* User Icon Display */
+#usericon {
+  display: flex;
 }
-#signInbtn:hover{
-    background-color:var(--fifth-color);
+
+/* Sign In Button Hover */
+#signInbtn:hover {
+  background-color: var(--fifth-color);
 }

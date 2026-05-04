@@ -1,76 +1,112 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-:root{
-    --primary-color: #4a90e2;
-}
-
-.container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    width: 100vw;
-    flex-direction: column;
-}
-.sign-up-form{
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    padding: 24px;
-    border-radius: 8px;
-    box-shadow: var(--shadow-md);
-    width: 400px;
+/* ============================================
+   GLOBAL RESET & CSS VARIABLES
+   ============================================ */
+/* Remove default margins and padding, enable border-box sizing */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-.form-input{
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-.form-input label{
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--text-dark);
+/* CSS Color Variables */
+:root {
+  --primary-color: #4a90e2;
 }
 
-.form-input input{
-    padding: 8px 12px;
-    border: 1px solid grey;
-    border-radius: 6px;
-    font-size: 14px;
+/* ============================================
+   FORM CONTAINER
+   ============================================ */
+/* Main Container - Centers form on screen */
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  flex-direction: column;
 }
 
-.sign-up-form button{
-    display: flex;
-    background-color: var(--primary-color);
-    padding: 8px 12px;
-    color: white;
-    cursor: pointer;
-    border-radius: 6px;
-    font-weight: 600;
-    font-size: 15px;
-    align-items: center;
-    justify-content: center;
+/* ============================================
+   SIGN UP FORM
+   ============================================ */
+/* Form Container - Card style with shadow */
+.sign-up-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: var(--shadow-md);
+  width: 400px;
 }
 
-#error{
-    font-size: 16px;
-    color: red;
-    font-weight: 600;
-    display: 'none';
-}
-.error input{
-    border: 2px solid red !important;
+/* ============================================
+   FORM INPUTS
+   ============================================ */
+/* Form Input Group - Label and input field together */
+.form-input {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
-#message{
-    font-size: 16px;
-    color: red;
-    font-weight: 600;
-    display: flex;
-    justify-content: center;
-    text-transform: capitalize;
+/* Form Input Label */
+.form-input label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+/* Form Input Field */
+.form-input input {
+  padding: 8px 12px;
+  border: 1px solid grey;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* ============================================
+   SUBMIT BUTTON
+   ============================================ */
+/* Sign Up Button Styling */
+.sign-up-form button {
+  display: flex;
+  background-color: var(--primary-color);
+  padding: 8px 12px;
+  color: white;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 15px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============================================
+   ERROR HANDLING & VALIDATION
+   ============================================ */
+/* Error Message Display */
+#error {
+  font-size: 16px;
+  color: red;
+  font-weight: 600;
+  display: 'none';
+}
+
+/* Input Field Error State - Red border on invalid inputs */
+.error input {
+  border: 2px solid red !important;
+}
+
+/* ============================================
+   SUCCESS/INFO MESSAGES
+   ============================================ */
+/* Message Display - For success or info messages */
+#message {
+  font-size: 16px;
+  color: red;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  text-transform: capitalize;
 }

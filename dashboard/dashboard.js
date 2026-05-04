@@ -1,24 +1,54 @@
+// ============================================
+// DOM ELEMENTS & API CONFIGURATION
+// ============================================
+
+// Modal overlay for add/edit form
 const modal = document.getElementById("modal");
+
+// Add book button
 const addBookBtn = document.getElementById("add-book");
+
+// Close modal button
 const closeBtn = document.getElementById("close-modal");
+
+// Form submit button
 const submitForm = document.getElementById("submit-form");
 
+// Table body for displaying books
 const tableBody = document.getElementById("table-body");
+
+// Books table
 const bookTable = document.getElementById("book-table");
+
+// Empty state message (shown when no books)
 const emptyState = document.getElementById("empty-state");
 
+// Book name input field
 const nameInput = document.getElementById("name");
+
+// Book author input field
 const authorInput = document.getElementById("author");
+
+// Book description input field
 const descInput = document.getElementById("description");
+
+// Book image file input
 const imageInput = document.getElementById("image");
 
+// Base API URL for books endpoint
 const API_BASE = "http://localhost:3000/api/books";
 
+// Track current book being edited (null if adding new)
 let currentBookId = null;
+
+// Track current book image URL
 let currentImageUrl = null;
 
-/* ---------------- MODAL ------------------ */
+// ============================================
+// MODAL FUNCTIONS - OPEN & CLOSE
+// ============================================
 
+// Add book button click - open modal for new book
 addBookBtn.addEventListener("click", () => {
     currentBookId = null;
     currentImageUrl = null;
@@ -26,19 +56,23 @@ addBookBtn.addEventListener("click", () => {
     openModal("Add New Book");
 });
 
+// Close button click handler
 closeBtn.addEventListener("click", closeModal);
 
+// Close modal when clicking outside of it
 window.addEventListener("click", (e) => {
     if (e.target === modal) {
         closeModal();
     }
 });
 
+// Open modal with title
 function openModal(title) {
     modal.style.display = "flex";
     document.getElementById("h23").textContent = title;
 }
 
+// Close modal and reset form
 function closeModal() {
     modal.style.display = "none";
     submitForm.reset();
@@ -47,20 +81,27 @@ function closeModal() {
     currentImageUrl = null;
 }
 
-/* ---------------- EMPTY STATE ---------------- */
+// ============================================
+// EMPTY STATE - SHOW/HIDE
+// ============================================
 
+// Show empty state message when no books exist
 function showEmptyState() {
     emptyState.style.display = "block";
     bookTable.style.display = "none";
 }
 
+// Hide empty state message
 function hideEmptyState() {
     emptyState.style.display = "none";
     bookTable.style.display = "table";
 }
 
-/* ---------------- IMAGE CONVERTER ---------------- */
+// ============================================
+// IMAGE CONVERSION - BASE64 ENCODING
+// ============================================
 
+// Convert file to base64 string for storage
 function toBase64(file) {
     return new Promise((resolve, reject) => {
         const reader = new FileReader();
@@ -72,8 +113,11 @@ function toBase64(file) {
     });
 }
 
-/* ---------------- LOAD BOOKS ---------------- */
+// ============================================
+// LOAD BOOKS FROM API
+// ============================================
 
+// Fetch all books from backend
 async function loadBooks() {
     try {
         const res = await fetch(API_BASE);
@@ -86,17 +130,23 @@ async function loadBooks() {
     }
 }
 
-/* ---------------- DISPLAY ---------------- */
+// ============================================
+// DISPLAY BOOKS IN TABLE
+// ============================================
 
+// Create table rows for each book
 function displayBooks(books) {
     tableBody.innerHTML = "";
 
+    // Check if books exist
     if (!books || books.length === 0) {
         showEmptyState();
         return;
     }
 
     hideEmptyState();
+    
+    // Create table row for each book
     books.forEach((book, index) => {
         const row = document.createElement("tr");
 
@@ -120,8 +170,11 @@ function displayBooks(books) {
     });
 }
 
-/* ---------------- SUBMIT (ADD + UPDATE) ---------------- */
+// ============================================
+// FORM SUBMISSION - ADD & UPDATE BOOK
+// ============================================
 
+// Handle form submit for adding or updating books
 submitForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -131,17 +184,19 @@ submitForm.addEventListener("submit", async (e) => {
     const author = authorInput.value.trim();
     const description = descInput.value.trim();
 
+    // Validate inputs
     if (!name || !author || !description) {
         alert("Fill all fields");
         return;
     }
 
-    // 🔥 loading state
+    // Set button to loading state
     saveBookBtn.disabled = true;
     saveBookBtn.textContent = currentBookId ? "Updating..." : "Saving...";
 
     let imageValue = currentImageUrl || "";
 
+    // Convert new image if uploaded
     if (imageInput.files && imageInput.files[0]) {
         imageValue = await toBase64(imageInput.files[0]);
     }
@@ -156,6 +211,7 @@ submitForm.addEventListener("submit", async (e) => {
     try {
         let res;
 
+        // Update existing book or create new one
         if (currentBookId) {
             res = await fetch(`${API_BASE}/${currentBookId}`, {
                 method: "PUT",
@@ -186,19 +242,23 @@ submitForm.addEventListener("submit", async (e) => {
         console.log(err);
         alert("Server error");
     } finally {
-        // reset button
+        // Reset button state
         saveBookBtn.disabled = false;
         saveBookBtn.textContent = "Submit";
     }
 });
 
-/* ---------------- EDIT ---------------- */
+// ============================================
+// EDIT BOOK
+// ============================================
 
+// Load book data and open edit modal
 async function editBook(id) {
     try {
         const res = await fetch(`${API_BASE}/${id}`);
         const book = await res.json();
 
+        // Populate form with book data
         nameInput.value = book.name;
         authorInput.value = book.author;
         descInput.value = book.description;
@@ -214,8 +274,11 @@ async function editBook(id) {
     }
 }
 
-/* ---------------- DELETE ---------------- */
+// ============================================
+// DELETE BOOK
+// ============================================
 
+// Delete book after confirmation
 async function deleteBook(id) {
     if (!confirm("Delete this book?")) return;
 
@@ -236,11 +299,17 @@ async function deleteBook(id) {
     }
 }
 
-/* ---------------- GLOBAL ---------------- */
+// ============================================
+// GLOBAL FUNCTION EXPORTS
+// ============================================
 
+// Make functions available globally for onclick handlers
 window.editBook = editBook;
 window.deleteBook = deleteBook;
 
-/* ---------------- INIT ---------------- */
+// ============================================
+// INITIALIZATION
+// ============================================
 
+// Load books when page loads
 document.addEventListener("DOMContentLoaded", loadBooks);

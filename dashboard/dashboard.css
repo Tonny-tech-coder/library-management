@@ -1,62 +1,80 @@
+/* ============================================
+   GLOBAL STYLES & CSS VARIABLES
+   ============================================ */
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
+/* CSS Color Variables - Change these to update entire theme */
+:root {
+  --primary-color: red;
+  --secondary-color:black;
+  --thrid-color: white;
+  --fouth-color: orangered;
+  --fifth-color: green;
+}
+
+/* ============================================
+   DASHBOARD TITLE & MAIN CONTENT
+   ============================================ */
 .dash-title {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+/* Add Book Button Styling */
 .add-book {
-  background-color: black;
-  color: white;
+  background-color: var(--secondary-color);
+  color: var(--thrid-color);
   padding: 10px;
   font-weight: 600;
   cursor: pointer;
 }
 
+/* Main Content Area - Added margin-top for fixed navbar */
 .main-content {
   display: flex;
   gap: 20px;
   flex-direction: column;
   padding: 20px;
+  margin-top: 150px;
 }
 
+/* ============================================
+   NAVBAR & NAVIGATION
+   ============================================ */
+/* Fixed Navigation Bar - Stays at top when scrolling */
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-
   z-index: 1000;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  border-bottom: 1px solid grey;
-  background-color: black;
-
+  border-bottom: 1px solid var(--primary-color);
+  background-color: var(--secondary-color);
   height: 135px;
   width: 100%;
-
   background-image: url("../image/logobig.webp");
   background-size: cover;
   background-repeat: no-repeat;
-
-  border-radius: 0; /* optional: better for fixed bars */
+  border-radius: 0;
   padding-left: 50px;
 }
 
+/* Logo Title Text */
 .logo_title {
-  color: white;
+  color: var(--thrid-color);
   font-size: 20px;
   font-weight: bold;
 }
 
+/* Logo Container */
 .logo {
   height: 100px;
   display: flex;
@@ -64,28 +82,33 @@
   gap: 8px;
 }
 
+/* Logo Image */
 .logo img {
   height: 50px;
   width: 50px;
   border-radius: 50%;
 }
 
+/* Navigation Links Container */
 .nav-link {
   display: flex;
   gap: 10px;
 }
 
+/* Individual Navigation Link */
 .link {
   font-size: 20px;
   padding: 5px;
   list-style: none;
 }
 
+/* Link Styling */
 .link a {
   text-decoration: none;
-  color: black;
+  color: var(--secondary-color);
 }
 
+/* Active Link Styling */
 .active {
   background-color: #FFF7ED;
   padding: 5px;
@@ -97,31 +120,37 @@
   border-radius: 6px;
 }
 
-/* ---------------- MODAL FIX (IMPORTANT) ---------------- */
-
+/* ============================================
+   MODAL - EDIT/ADD BOOK FORM
+   ============================================ */
+/* Modal Overlay - Dark background that covers entire screen */
 .modal {
   background-color: rgba(0, 0, 0, 0.5);
   height: 100vh;
   width: 100vw;
   position: fixed;
+  top: 0;
+  left: 0;
   display: none;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: 2000;
 }
 
+/* Modal Content Box - Form container centered on screen */
 .modal-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: rgb(87, 21, 21);
+  background-color: var(--secondary-color);
   width: 320px;
   padding: 20px;
   border-radius: 20px;
-  box-shadow: 4px 4px 100px 0px red;
+  box-shadow: 4px 4px 100px 0px var(--primary-color);
 }
 
+/* Modal Header - Title and Close Button */
 .modal-title {
   display: flex;
   justify-content: space-between;
@@ -129,8 +158,10 @@
   width: 100%;
 }
 
-/* ---------------- INPUT FIX ---------------- */
-
+/* ============================================
+   FORM INPUTS & TEXTAREA
+   ============================================ */
+/* Input Fields and Text Area Styling */
 input,
 textarea {
   width: 80%;
@@ -138,70 +169,84 @@ textarea {
   border-radius: 8px;
   border: none;
   margin: 5px 0;
-  background-color: orangered;
+  background-color: var(--fouth-color);
 }
 
-/* ---------------- BUTTON FIX ---------------- */
-
+/* ============================================
+   BUTTONS & INTERACTIONS
+   ============================================ */
+/* General Button Styling */
 button {
   padding: 10px;
-  background-color:orangered ;
-  color: white;
+  background-color: var(--fouth-color);
+  color: var(--thrid-color);
   font-weight: 600;
   cursor: pointer;
   border: none;
   border-radius: 8px;
 }
+
+/* Close Modal Button Hover */
 #close-modal:hover {
-  background-color: red;
+  background-color: var(--primary-color);
 }
 
+/* General Button Hover */
 button:hover {
-  background-color: green;
+  background-color: var(--fifth-color);
 }
 
+/* Save Book Button Hover */
 #save-book:hover {
-  background-color: green;
+  background-color: var(--fifth-color);
 }
+
+/* Save Book Button Styling */
 #save-book {
-  background-color: orangered;
-  color: black;
+  background-color: var(--fouth-color);
+  color: var(--secondary-color);
 }
 
-/* ---------------- NAV BUTTON ---------------- */
-
+/* Add Book Button Styling */
 #add-book {
-  background-color: orangered;
-  color: black;
+  background-color: var(--fouth-color);
+  color: var(--secondary-color);
 }
 
 #add-book:hover {
-  background-color: green;
+  background-color: var(--fifth-color);
 }
 
-/* ---------------- TABLE FIX (IMPORTANT FOR JS) ---------------- */
-
+/* ============================================
+   TABLE STYLING - BOOKS DISPLAY
+   ============================================ */
+/* Books Table Container */
 #book-table {
   width: 100%;
   border-collapse: collapse;
 }
 
+/* Table Header and Data Cell Styling */
 #book-table th,
 #book-table td {
   padding: 10px;
   text-align: center;
-  border: 1px solid #ccc;
+  border: 1px solid var(--primary-color);
 }
 
-/* ---------------- IMAGE FIX ---------------- */
-
+/* ============================================
+   TABLE IMAGES
+   ============================================ */
+/* Book Cover Images in Table */
 #book-table img {
   border-radius: 6px;
   object-fit: cover;
 }
 
-/* ---------------- EMPTY STATE ---------------- */
-
+/* ============================================
+   EMPTY STATE - NO BOOKS MESSAGE
+   ============================================ */
+/* Message shown when no books are in database */
 .empty-state {
   text-align: center;
   padding: 30px;
@@ -209,17 +254,23 @@ button:hover {
   color: gray;
 }
 
-/* ---------------- NAV BUTTON FIX ---------------- */
+/* ============================================
+   NAVIGATION BUTTONS
+   ============================================ */
 
+/* Navigation Button Styling */
 #nav-btn {
-  background-color: orangered;
+  background-color: var(--fouth-color);
   padding: 5px 10px;
-  color: black;
+  color: var(--secondary-color);
 }
 
+/* Navigation Button Hover */
 #nav-btn:hover {
-  background-color: green;
+  background-color: var(--fifth-color);
 }
+
+/* Navigation Links Container */
 .nav-link {
   list-style: none;
   padding: 0;
@@ -228,28 +279,49 @@ button:hover {
   gap: 15px;
   align-items: center;
 }
+
+/* Active Navigation Link */
 .link-active {
-  background-color:orangered;
+  background-color: var(--fouth-color);
   padding: 9px;
   border-radius: 6px;
 }
+
+/* Active Navigation Link Hover */
 .link-active:hover {
-  background-color: green;
+  background-color: var(--fifth-color);
 }
+
+/* ============================================
+   GLOBAL LINK STYLING
+   ============================================ */
+/* All Links Styling */
 a{
-  color:black;
+  color: var(--secondary-color);
   text-decoration: none;
 }
+
+/* ============================================
+   IMAGE UPLOAD INPUT
+   ============================================ */
+/* File Input for Image Upload */
 #image {
   border-radius: 6px;
-  background-color: orangered;
+  background-color: var(--fouth-color);
 }
+
+/* ============================================
+   TABLE & BODY STYLING
+   ============================================ */
+/* Table, Header, and Data Elements */
 table,th,td{
-  background-color: black;
-  color: orangered;
-  border :1px solid red;
-  border: collapse;
+  background-color: var(--secondary-color);
+  color: var(--fouth-color);
+  border: 1px solid var(--primary-color);
+  border-collapse: collapse;
 }
+
+/* Page Background Color */
 body{
-  background-color: black;
+  background-color: var(--secondary-color);
 }
