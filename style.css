@@ -2,17 +2,25 @@
   padding: 0;
   margin: 0;
 }
+
+:root {
+  --primary-color: red;
+  --secondary-color:black;
+  --thrid-color: white;
+  --fouth-color: orangered;
+  --fifth-color: green;
+}
 .main-content {
   display: flex;
   width: 100%;
 }
 body{
-    background-color: #FAFAFA;
+    background-color: var(--thrid-color);
 }
 
 .sidebar {
   height: 100vh;
-  background-color:black;
+  background-color:var(--secondary-color);
   width: 200px;
   padding: 0px 10px;
   position: fixed;
@@ -30,14 +38,14 @@ body{
   align-items: center;
   /* justify-content: center; */
   gap: 8px;
-  border: 2px solid red;
+  border: 2px solid var(--primary-color);
   border-radius: 7px;
-  background-color: black;
+  background-color: var(--secondary-color);
 }
 .logo_title {
   font-size: 20px;
   font-weight: bold;
-  color: #FAFAFA;
+  color: var(--primary-color);
   
 }
 .logo img {
@@ -48,23 +56,23 @@ body{
 .search-bar input{
     width: 200px;
     padding: 12px 20px;
-    border: 2px solid red;
+    border: 2px solid var(--primary-color);
     border-radius: 8px;
-    background-color:orangered;
-    color: white;
+    background-color:var(--primary-color);
+    color:var(--thrid-color);
     outline: none;
     cursor: pointer;
 }
 .search-bar button{
-    border: 1px solid red;
+    border: 1px solid var(--fouth-color);
     cursor: pointer;
 }
 
 .search-bar button:hover{
-    background-color: green;
+    background-color: var(--fifth-color);
 }
 #btn:hover{
-    background-color: green;
+    background-color: var(--fifth-color);
 }
 
 .navbar {
@@ -73,9 +81,9 @@ body{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 2px solid red;
+  border: 2px solid var(--primary-color);
   border-radius: 7px;
-  background-color: black;
+  background-color: var(--secondary-color);
 }
 
 .navlink {
@@ -86,23 +94,23 @@ body{
 .link {
     font-size: 20px;
     padding: 5px;
-    background-color: orangered;
+    background-color: var(--primary-color);
     border-radius: 7px;
 
 }
 .link a{
     text-decoration: none;
-    color: black;
+    color: var(--secondary-color);
 }
-
+/*it was white*/
 .active{
-    background-color: #FFF7ED;
+    background-color: var(--primary-color);
     padding: 5px;
     border-radius: 6px;
 }
 
 .link:hover{
-    background-color:green;
+    background-color: var(--fifth-color);
     border-radius: 6px;
 }
 
@@ -111,7 +119,7 @@ body{
     display: flex;
     flex-direction: column;
     gap: 20px;
-    background-color:black;
+    background-color: var(--secondary-color);
     width: calc(100vw - 200px);
     margin-left: 200px;
 }
@@ -128,15 +136,15 @@ background-image:url("../image/logobig.webp") ;
 background-size: cover;
 background-repeat: no-repeat;
 border-radius: 12px;
-border:2px solid red;
+border:2px solid var(--primary-color);
 
 padding-left: -3px;
 
 }
 
 .book-library button{
-    background-color:orangered;
-    color: white;
+    background-color:var(--primary-color);
+    color: var(--thrid-color);
     padding: 10px;
     font-weight: 600;
     cursor: pointer;
@@ -169,33 +177,33 @@ padding-left: -3px;
 }
 
 #book-container::-webkit-scrollbar-track {
-    background: orangered;
+    background: var(--primary-color);
     border-radius: 10px;
 }
 
 #book-container::-webkit-scrollbar-thumb {
-    background: orangered;
+    background: var(--primary-color);
     border-radius: 10px;
 }
 
 #book-container::-webkit-scrollbar-thumb:hover {
-    background: #ff6b35;
+    background: var(--primary-color);
 }
 
 .book-card{
-    background-color: white;
+    background-color:var(--primary-color);
     width: 230px;
     min-width: 230px;
-    border: 2px solid red;
+    border: 2px solid var(--primary-color);
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
+/* it was -10px */
 .book-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(255, 87, 34, 0.3);
+    transform: translateY(-20px);
+    box-shadow: 0 10px 16px rgba(255, 60, 1, 0.774);
 }
 .book-card img{
     width: 100%;
@@ -213,23 +221,25 @@ padding-left: -3px;
 .title{
     font-size: 18px;
     font-weight: 600;
-    color: black;
+    color:var(--secondary-color);
 }
 .author{
     font-size: 15px;
     font-weight: 500;
-    color: #333;
+    color: var(--secondary-color);
 }
 .desc{
     font-size: 14px;
-    color: #555;
+    color: var(--secondary-color);
 }
+/* it was white */
 p{
-    color: white;
+    color: var(--primary-color);
 }
+/* it was none */
 #usericon{
-    display:none;
+    display:flex;
 }
 #signInbtn:hover{
-    background-color:green;
+    background-color:var(--fifth-color);
 }
